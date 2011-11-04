@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Drawing;
+
+namespace AnalizatorFalkowy
+{
+    abstract class Sygnal
+    {
+        protected HScrollBar scrollBar;
+        protected TrackBar zoomTrackBar;
+        protected PictureBox pictureBoxSygnal;
+        protected Graphics graphicsSygnal;       
+
+        public Sygnal(HScrollBar scrollBar, TrackBar zoomTrackBar, PictureBox pictureBoxSygnal)
+        {
+            this.scrollBar = scrollBar;
+            this.zoomTrackBar = zoomTrackBar; 
+            this.pictureBoxSygnal = pictureBoxSygnal;
+            graphicsSygnal = Graphics.FromHwnd(pictureBoxSygnal.Handle);
+        }
+
+        public abstract void Rysuj();
+    }
+}

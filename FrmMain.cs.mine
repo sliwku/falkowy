@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace AnalizatorFalkowy
+{
+    public partial class FrmMain : Form
+    {
+        Plik plik;
+        Sygnal sygnal;
+        public FrmMain()
+        {
+            InitializeComponent();
+            label1.Text = short.MaxValue.ToString();
+        }
+
+        private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void plikWaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialogWave.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                plik = new PlikWave(openFileDialogWave.FileName);
+                if (plik.OtworzPlik())
+                {
+                    sygnal = new Sygnal16bit(hScrollBarSygnal, trackBarSygnal, pbSygnal, ((PlikWave)plik).Kanal0Bit16);
+                    sygnal.Rysuj();
+                }
+            }
+        }
+
+        private void trackBarSygnal_Scroll(object sender, EventArgs e)
+        {
+            sygnal.Zoom();
+        }
+
+        private void hScrollBarSygnal_Scroll(object sender, ScrollEventArgs e)
+        {
+            sygnal.Scroll();
+        }
+       
+    }
+}

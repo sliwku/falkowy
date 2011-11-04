@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AnalizatorFalkowy.CWT" Collapsed="true">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAgAEAAAAAACAAoAAAAAAAAAgCAAAAAAIAAIAQEA=</HashCode>
+      <FileName>CWT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.FrmMain" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQIAAAAAACAAAREIABCASEAiAAAAAQIAAggABDAAAgA=</HashCode>
+      <FileName>FrmMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Oscylogram" Collapsed="true">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEAAICEAAAAAAEABEAgAAAgAAAAABAAQAAAgARUAAQE=</HashCode>
+      <FileName>Oscylogram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Plik" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAABgAAAAYAAAAEAAAAAAAAQgAAAAgAAAAYIAA=</HashCode>
+      <FileName>Plik.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.PlikWave" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAABAAAoCAAgAAAAAAABAAogAABAgAIAQIQA=</HashCode>
+      <FileName>PlikWave.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Program" Collapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.RysunekSygnalu" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GABAACgMAAAgBQgAAAAAAAQAAACABHAgAAICAAQAAgA=</HashCode>
+      <FileName>RysunekSygnalu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.RysunekSygnalu16Bit" Collapsed="true">
+    <Position X="4.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ggAEAAAAAAAAAAAAAAAAAAAAAACAAoBAQAAAAAQAAAA=</HashCode>
+      <FileName>RysunekSygnalu16Bit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Skala">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEgABAYCAgAEAAAIAABAAAAAAAgIALAAEAAQA=</HashCode>
+      <FileName>Skala.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.SkalaOscylogramu" Collapsed="true">
+    <Position X="2.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQACSAAAAAQAAAIAAAAAAIAAAAgUAAoACAAAEAYA=</HashCode>
+      <FileName>SkalaOscylogramu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Spektrogram">
+    <Position X="8.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAEAAAAAARAAAAgAAAAAAAAQA=</HashCode>
+      <FileName>Spektrogram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Sygnal16bit" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAAAAAgAAAAAQA=</HashCode>
+      <FileName>Sygnal16bit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Sygnal2" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QFAAAAAQAgAEIAAAMAAAAAgoAAABFAAAAAAgAAAAgQA=</HashCode>
+      <FileName>Sygnal2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Sygnal8bit" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAIAAAAAgAAAAAQA=</HashCode>
+      <FileName>Sygnal8.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Properties.Resources" Collapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AnalizatorFalkowy.Properties.Settings" Collapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
