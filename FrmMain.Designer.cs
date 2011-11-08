@@ -50,6 +50,7 @@
             this.pbFalka = new System.Windows.Forms.PictureBox();
             this.numA = new System.Windows.Forms.NumericUpDown();
             this.hScrollSpektrogram = new System.Windows.Forms.HScrollBar();
+            this.pnLegendaSp = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOscylogram)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOscylogram)).BeginInit();
@@ -97,14 +98,14 @@
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.otworzToolStripMenuItem.Text = "Otworz";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
             this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
@@ -121,14 +122,14 @@
             // 
             this.liczToolStripMenuItem.Enabled = false;
             this.liczToolStripMenuItem.Name = "liczToolStripMenuItem";
-            this.liczToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.liczToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.liczToolStripMenuItem.Text = "Licz";
             this.liczToolStripMenuItem.Click += new System.EventHandler(this.liczToolStripMenuItem_Click);
             // 
             // ustawToolStripMenuItem
             // 
             this.ustawToolStripMenuItem.Name = "ustawToolStripMenuItem";
-            this.ustawToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ustawToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.ustawToolStripMenuItem.Text = "Ustaw";
             this.ustawToolStripMenuItem.Click += new System.EventHandler(this.ustawToolStripMenuItem_Click);
             // 
@@ -283,11 +284,19 @@
             this.hScrollSpektrogram.TabIndex = 15;
             this.hScrollSpektrogram.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollSpektrogram_Scroll);
             // 
+            // pnLegendaSp
+            // 
+            this.pnLegendaSp.Location = new System.Drawing.Point(100, 244);
+            this.pnLegendaSp.Name = "pnLegendaSp";
+            this.pnLegendaSp.Size = new System.Drawing.Size(80, 253);
+            this.pnLegendaSp.TabIndex = 17;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 566);
+            this.Controls.Add(this.pnLegendaSp);
             this.Controls.Add(this.hScrollSpektrogram);
             this.Controls.Add(this.numA);
             this.Controls.Add(this.pbFalka);
@@ -306,7 +315,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Analizator falkowy";
-            
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOscylogram)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -348,6 +356,7 @@
         private System.Windows.Forms.PictureBox pbFalka;
         private System.Windows.Forms.NumericUpDown numA;
         private System.Windows.Forms.HScrollBar hScrollSpektrogram;
+        private System.Windows.Forms.Panel pnLegendaSp;
     }
 }
 

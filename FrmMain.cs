@@ -61,6 +61,8 @@ namespace AnalizatorFalkowy
 
                     spektrogram = new Spektrogram(pbSpektrogram, pbSkalaSpektrY, pbSkalaSpektrX, hScrollSpektrogram, cwt, oscylogram);
                     spektrogram.LogarytmicznaSkala = chbSkalaLogarytmiczna.Checked;
+                    LegendaSpektrogramu leg = new LegendaSpektrogramu(pnLegendaSp, spektrogram);
+
 
                     liczToolStripMenuItem.Enabled = true;
                     chbSkalaLogarytmiczna.Enabled = true; 

@@ -76,6 +76,7 @@
     <Compile Include="FrmUstawieniaCWT.Designer.cs">
       <DependentUpon>FrmUstawieniaCWT.cs</DependentUpon>
     </Compile>
+    <Compile Include="LegendaSpektrogramu.cs" />
     <Compile Include="Oscylogram.cs" />
     <Compile Include="Paleta768Standard.cs" />
     <Compile Include="PaletaCzarnoBiala.cs" />

@@ -12,7 +12,7 @@ namespace AnalizatorFalkowy
         private PictureBox pbSpektrogram;
         private HScrollBar scrollSpektrogram;
         private CWT cwt;
-        private PaletaKolorow paletaKolorow;
+        private PaletaKolorow paletaKolorow;        
         private Color[,] koloryLinCalosc, koloryLogCalosc, koloryLinSkala, koloryLogSkala;
         private bool logarytmicznaSkala;
         private Bitmap bmpLin;
@@ -71,6 +71,12 @@ namespace AnalizatorFalkowy
         public bool LogarytmicznaSkala
         {            
             set { logarytmicznaSkala = value; }
+            get { return logarytmicznaSkala; }
+        }
+        public PaletaKolorow PaletaKolorow
+        {
+            get { return paletaKolorow; }
+            set { paletaKolorow = value; }
         }
 
         public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, CWT cwt, Oscylogram oscylogram)
