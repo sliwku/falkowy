@@ -32,8 +32,7 @@ namespace AnalizatorFalkowy
             pbSkala.Location = new Point(0, 0);
             pbSkala.Size = new Size(szerokoscSkali, pnLegenda.Height);            
             pbRysunek.Location = new Point(szerokoscSkali, 0);
-            pbRysunek.Size = new Size(szerokoscRysunku, pnLegenda.Height);
-            
+            pbRysunek.Size = new Size(szerokoscRysunku, pnLegenda.Height);            
 
             UtworzRysunek();
         }

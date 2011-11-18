@@ -106,8 +106,7 @@ namespace AnalizatorFalkowy
         }
 
         public void Rysuj()
-        {
-            if (koloryLinCalosc == null || koloryLogCalosc == null)
+        {  
             {
                 UtworzSpektrogram();
                 SkalujSpektrogram();
