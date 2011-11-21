@@ -122,14 +122,14 @@
             // 
             this.liczToolStripMenuItem.Enabled = false;
             this.liczToolStripMenuItem.Name = "liczToolStripMenuItem";
-            this.liczToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.liczToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.liczToolStripMenuItem.Text = "Licz";
             this.liczToolStripMenuItem.Click += new System.EventHandler(this.liczToolStripMenuItem_Click);
             // 
             // ustawToolStripMenuItem
             // 
             this.ustawToolStripMenuItem.Name = "ustawToolStripMenuItem";
-            this.ustawToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.ustawToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ustawToolStripMenuItem.Text = "Ustaw";
             this.ustawToolStripMenuItem.Click += new System.EventHandler(this.ustawToolStripMenuItem_Click);
             // 
@@ -288,7 +288,7 @@
             // 
             this.pnLegendaSp.Location = new System.Drawing.Point(100, 244);
             this.pnLegendaSp.Name = "pnLegendaSp";
-            this.pnLegendaSp.Size = new System.Drawing.Size(80, 253);
+            this.pnLegendaSp.Size = new System.Drawing.Size(85, 253);
             this.pnLegendaSp.TabIndex = 17;
             // 
             // FrmMain
