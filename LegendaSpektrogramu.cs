@@ -12,8 +12,11 @@ namespace AnalizatorFalkowy
         private readonly int szerokoscSkali = 40;
         private readonly int szerokoscRysunku;
         private readonly int miejsceNaTxtPonadRys = 10;
+
         private readonly int iloscEtykietLin = 6;
-        private readonly int dyEtykietLin = (int)(100 / (6.0 - 1.0));
+        private readonly int dWartoscEtykietLin;
+        private int iloscEtykietLog = 7;
+        private int dWartoscEtykietLog;
 
         private int dySkalaLin;
         private int dySkalaLog;
@@ -32,6 +35,8 @@ namespace AnalizatorFalkowy
             this.pnLegenda = pnLegenda;
             this.spektrogram = spektrogram;
 
+            dWartoscEtykietLin = (int)(100 / (iloscEtykietLin - 1.0));
+
             szerokoscRysunku = pnLegenda.Width - szerokoscSkali;
 
             pbRysunek = new PictureBox();
@@ -49,11 +54,21 @@ namespace AnalizatorFalkowy
             pbSkala.Image = new Bitmap(pbSkala.Width, pbSkala.Height);
             gPbSkala = Graphics.FromImage(pbSkala.Image);
 
-            UtworzRysunek();
+            UtworzRysunekPalety();
             UtworzSkale();
         }
 
-        private void UtworzRysunek()
+        public void Rysuj()
+        {
+            UtworzRysunekPalety();
+            UtworzSkale();
+        }
+        public void OdswiezSkale()
+        {
+            UtworzSkale();
+        }
+
+        private void UtworzRysunekPalety()
         {
             pbRysunek.Image = new Bitmap(pbRysunek.Width, pbRysunek.Height);            
             Graphics g = Graphics.FromImage(pbRysunek.Image); 
@@ -65,21 +80,38 @@ namespace AnalizatorFalkowy
                 pen.Color = spektrogram.PaletaKolorow.Paleta[(int)(c * dc)];
                 g.DrawLine(pen, 0, y, szerokoscRysunku, y);               
             }
-        }
-
-        private void OliczDYSkali()
-        {
-            dySkalaLin = (int)(pbRysunek.Height / (double)(iloscEtykietLin - 1));
-     //       dySkalaLog = 
-        }
+        }       
 
         private void UtworzSkale()
         {
-            OliczDYSkali();
-            gPbSkala.Clear(pbSkala.BackColor);
-            for (int y = 0, etykieta = 100; y < pbSkala.Height; y += dySkalaLin, etykieta -= dyEtykietLin)
-                gPbSkala.DrawString(etykieta.ToString() + " % -", new Font(new FontFamily("Times New Roman"), 8), new SolidBrush(Color.Black),
-                    pbSkala.Width, y, formatDoPrawej);
+            ObliczIloscEtykietLog();
+            OliczDYSkali();            
+            ObliczDWartoscEtykietLog();
+
+            pbSkala.Image = new Bitmap(pbSkala.Width, pbSkala.Height);
+            gPbSkala = Graphics.FromImage(pbSkala.Image);            
+
+            if (spektrogram.LogarytmicznaSkala)
+                for (int y = 0, etykieta = 0; y < pbSkala.Height; y += dySkalaLog, etykieta -= dWartoscEtykietLog)
+                    gPbSkala.DrawString(etykieta.ToString() + " dB -", new Font(new FontFamily("Times New Roman"), 8), new SolidBrush(Color.Black),
+                        pbSkala.Width, y, formatDoPrawej);
+            else
+                for (int y = 0, etykieta = 100; y < pbSkala.Height; y += dySkalaLin, etykieta -= dWartoscEtykietLin)
+                    gPbSkala.DrawString(etykieta.ToString() + " % -", new Font(new FontFamily("Times New Roman"), 8), new SolidBrush(Color.Black),
+                        pbSkala.Width, y, formatDoPrawej);
+        }
+        private void OliczDYSkali()
+        {
+            dySkalaLin = (int)(pbRysunek.Height / (double)(iloscEtykietLin - 1));
+            dySkalaLog = (int)(pbRysunek.Height / (double)(iloscEtykietLog - 1));
+        }
+        private void ObliczIloscEtykietLog()
+        {
+            iloscEtykietLog = -spektrogram.MinDecybeli / 10 + 1;
+        }
+        private void ObliczDWartoscEtykietLog()
+        {
+            dWartoscEtykietLog = (int)(-spektrogram.MinDecybeli / (iloscEtykietLog - 1.0));
         }
     }
 }

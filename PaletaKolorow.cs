@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace AnalizatorFalkowy
 {
-    abstract class PaletaKolorow
+    public abstract class PaletaKolorow
     {
         protected Color[] paleta;
 

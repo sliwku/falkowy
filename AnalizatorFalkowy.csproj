@@ -64,6 +64,12 @@
     <Compile Include="FalkaDyskretna.cs" />
     <Compile Include="FalkaMexHat.cs" />
     <Compile Include="FalkaMorleta.cs" />
+    <Compile Include="FrmUstawMINdB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUstawMINdB.Designer.cs">
+      <DependentUpon>FrmUstawMINdB.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="Sygnal2.cs" />
     <Compile Include="Sygnal16bit.cs" />
     <Compile Include="Sygnal8.cs" />
+    <EmbeddedResource Include="FrmUstawMINdB.resx">
+      <DependentUpon>FrmUstawMINdB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

@@ -36,6 +36,15 @@
             this.cWTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liczToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.skalaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.liniowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logarytmicznaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ustawMindBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dB40ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dB50ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dB60ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dB70ToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dB80ToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogPlikWave = new System.Windows.Forms.OpenFileDialog();
             this.pictureBoxOscylogram = new System.Windows.Forms.PictureBox();
             this.hScrollOscylogram = new System.Windows.Forms.HScrollBar();
@@ -79,7 +88,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
-            this.cWTToolStripMenuItem});
+            this.cWTToolStripMenuItem,
+            this.skalaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(976, 24);
@@ -98,14 +108,14 @@
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.otworzToolStripMenuItem.Text = "Otworz";
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.otworzToolStripMenuItem.Text = "Otwórz";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
             this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
@@ -132,6 +142,84 @@
             this.ustawToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ustawToolStripMenuItem.Text = "Ustaw";
             this.ustawToolStripMenuItem.Click += new System.EventHandler(this.ustawToolStripMenuItem_Click);
+            // 
+            // skalaToolStripMenuItem
+            // 
+            this.skalaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.liniowaToolStripMenuItem,
+            this.logarytmicznaToolStripMenuItem});
+            this.skalaToolStripMenuItem.Enabled = false;
+            this.skalaToolStripMenuItem.Name = "skalaToolStripMenuItem";
+            this.skalaToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.skalaToolStripMenuItem.Text = "Skala";
+            // 
+            // liniowaToolStripMenuItem
+            // 
+            this.liniowaToolStripMenuItem.Name = "liniowaToolStripMenuItem";
+            this.liniowaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.liniowaToolStripMenuItem.Text = "Liniowa";
+            this.liniowaToolStripMenuItem.Click += new System.EventHandler(this.liniowaToolStripMenuItem_Click);
+            // 
+            // logarytmicznaToolStripMenuItem
+            // 
+            this.logarytmicznaToolStripMenuItem.Checked = true;
+            this.logarytmicznaToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.logarytmicznaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ustawMindBToolStripMenuItem});
+            this.logarytmicznaToolStripMenuItem.Name = "logarytmicznaToolStripMenuItem";
+            this.logarytmicznaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logarytmicznaToolStripMenuItem.Text = "Logarytmiczna";
+            this.logarytmicznaToolStripMenuItem.Click += new System.EventHandler(this.logarytmicznaToolStripMenuItem_Click);
+            // 
+            // ustawMindBToolStripMenuItem
+            // 
+            this.ustawMindBToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dB40ToolStripMenuItem,
+            this.dB50ToolStripMenuItem1,
+            this.dB60ToolStripMenuItem2,
+            this.dB70ToolStripMenuItem3,
+            this.dB80ToolStripMenuItem4});
+            this.ustawMindBToolStripMenuItem.Name = "ustawMindBToolStripMenuItem";
+            this.ustawMindBToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.ustawMindBToolStripMenuItem.Text = "Ustaw Minimum dB";
+            this.ustawMindBToolStripMenuItem.Click += new System.EventHandler(this.ustawToolStripMenuItem1_Click);
+            // 
+            // dB40ToolStripMenuItem
+            // 
+            this.dB40ToolStripMenuItem.Name = "dB40ToolStripMenuItem";
+            this.dB40ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dB40ToolStripMenuItem.Text = "-40 dB";
+            this.dB40ToolStripMenuItem.Click += new System.EventHandler(this.dBToolStripMenuItem_Click);
+            // 
+            // dB50ToolStripMenuItem1
+            // 
+            this.dB50ToolStripMenuItem1.Name = "dB50ToolStripMenuItem1";
+            this.dB50ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.dB50ToolStripMenuItem1.Text = "-50 dB";
+            this.dB50ToolStripMenuItem1.Click += new System.EventHandler(this.dBToolStripMenuItem1_Click);
+            // 
+            // dB60ToolStripMenuItem2
+            // 
+            this.dB60ToolStripMenuItem2.Checked = true;
+            this.dB60ToolStripMenuItem2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.dB60ToolStripMenuItem2.Name = "dB60ToolStripMenuItem2";
+            this.dB60ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.dB60ToolStripMenuItem2.Text = "-60 dB";
+            this.dB60ToolStripMenuItem2.Click += new System.EventHandler(this.dBToolStripMenuItem2_Click);
+            // 
+            // dB70ToolStripMenuItem3
+            // 
+            this.dB70ToolStripMenuItem3.Name = "dB70ToolStripMenuItem3";
+            this.dB70ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.dB70ToolStripMenuItem3.Text = "-70 dB";
+            this.dB70ToolStripMenuItem3.Click += new System.EventHandler(this.dBToolStripMenuItem3_Click);
+            // 
+            // dB80ToolStripMenuItem4
+            // 
+            this.dB80ToolStripMenuItem4.Name = "dB80ToolStripMenuItem4";
+            this.dB80ToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.dB80ToolStripMenuItem4.Text = "-80 dB";
+            this.dB80ToolStripMenuItem4.Click += new System.EventHandler(this.dBToolStripMenuItem4_Click);
             // 
             // openFileDialogPlikWave
             // 
@@ -357,6 +445,15 @@
         private System.Windows.Forms.NumericUpDown numA;
         private System.Windows.Forms.HScrollBar hScrollSpektrogram;
         private System.Windows.Forms.Panel pnLegendaSp;
+        private System.Windows.Forms.ToolStripMenuItem skalaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem liniowaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logarytmicznaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ustawMindBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dB40ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dB50ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dB60ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem dB70ToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem dB80ToolStripMenuItem4;
     }
 }
 

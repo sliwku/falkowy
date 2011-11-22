@@ -12,7 +12,7 @@ namespace AnalizatorFalkowy
     /// obliczonych juz skal. Moze obliczyc dla nowej skali poprzez przekazanie jej do 
     /// wlasciwosci Skala. Udostepnia takze fukncje oswiez.
     /// </summary>
-    abstract class RysunekSygnalu
+    public abstract class RysunekSygnalu
     {
         public const double PODZIELNIK_SKALI = 2;
         protected const int GRANICA_ZAGESZCZENIE_PIKSELI = 7;

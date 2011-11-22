@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace AnalizatorFalkowy
 {
-    class Oscylogram
+    public class Oscylogram
     {
         private Graphics graphicsRysunek;
         

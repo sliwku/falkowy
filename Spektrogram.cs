@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace AnalizatorFalkowy
 {
-    class Spektrogram
+    public class Spektrogram
     {
         private PictureBox pbSpektrogram;
         private HScrollBar scrollSpektrogram;
@@ -19,7 +19,8 @@ namespace AnalizatorFalkowy
         private Bitmap bmpLog;
         private Oscylogram oscylogram;
 
-        private SkalaSpektrogram skalaSpektrogram;
+        private SkalaSpektrogram skala;
+        LegendaSpektrogramu legenda;
 
         private double startA;
         private double stopA;
@@ -35,7 +36,14 @@ namespace AnalizatorFalkowy
         public int MinDecybeli
         {
             get { return MinimumLogarytmowaneToDecybel(minLogarytmowane); }
-            set { if(value < 0) minLogarytmowane =  DecybelToMinimumLogarytmowane(value); }
+            set
+            {
+                if (value < 0)
+                {
+                    minLogarytmowane = DecybelToMinimumLogarytmowane(value);
+                    legenda.OdswiezSkale();
+                }
+            }
         }
 
         public double Dy
@@ -88,12 +96,12 @@ namespace AnalizatorFalkowy
             set { paletaKolorow = value; }
         }
 
-        public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, CWT cwt, Oscylogram oscylogram)
-            : this(pbSpektrogram, pbSkalaA, pbSkalaB,scrollSpektrogram, cwt, oscylogram, new Paleta768Standard(), true)
+        public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, Panel legendaSpektrogramu, CWT cwt, Oscylogram oscylogram)
+            : this(pbSpektrogram, pbSkalaA, pbSkalaB,scrollSpektrogram, legendaSpektrogramu, cwt, oscylogram, new Paleta768Standard(), true)
         {
             
         }
-        public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram,
+        public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, Panel legendaSpektrogramu,
             CWT cwt, Oscylogram oscylogram, PaletaKolorow paletaKolorow, bool logarytmicznaSkala)
         {
             this.pbSpektrogram = pbSpektrogram;
@@ -111,7 +119,8 @@ namespace AnalizatorFalkowy
                 iloscA = cwt.IloscA;
             }           
 
-            skalaSpektrogram = new SkalaSpektrogram(this, oscylogram, pbSpektrogram, pbSkalaB, pbSkalaA);
+            skala = new SkalaSpektrogram(this, oscylogram, pbSpektrogram, pbSkalaB, pbSkalaA);
+            legenda = new LegendaSpektrogramu(legendaSpektrogramu, this);
         }
 
         public void Rysuj()
@@ -132,7 +141,8 @@ namespace AnalizatorFalkowy
                 pbSpektrogram.Image = bmpLog;
             else
                 pbSpektrogram.Image = bmpLin;
-            skalaSpektrogram.Rysuj();
+            skala.Rysuj();
+            legenda.Rysuj();
         }
         private void UtworzSpektrogram()
         {
@@ -187,7 +197,8 @@ namespace AnalizatorFalkowy
                 pbSpektrogram.Image = bmpLog;
             else
                 pbSpektrogram.Image = bmpLin;
-        }
+            legenda.OdswiezSkale();
+        }       
 
         private int MinimumLogarytmowaneToDecybel(double minLogatytmowane)
         {
@@ -195,7 +206,7 @@ namespace AnalizatorFalkowy
         }
         private double DecybelToMinimumLogarytmowane(int decybel)
         {
-            return Math.Pow((decybel / 10.0), 10);
+            return Math.Pow(10, (decybel / 10.0));
         }
 
        

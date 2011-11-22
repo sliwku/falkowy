@@ -14,7 +14,7 @@ namespace AnalizatorFalkowy
         PlikWave plikWave;
         RysunekSygnalu rysunekSygnalu;
         Oscylogram oscylogram;
-        Spektrogram spektrogram;
+        Spektrogram spektrogram;        
         Falka falka, falka2;
         CWT cwt;
 
@@ -59,13 +59,12 @@ namespace AnalizatorFalkowy
                     
                     oscylogram.Rysuj();
 
-                    spektrogram = new Spektrogram(pbSpektrogram, pbSkalaSpektrY, pbSkalaSpektrX, hScrollSpektrogram, cwt, oscylogram);
-                    spektrogram.LogarytmicznaSkala = chbSkalaLogarytmiczna.Checked;
-                    LegendaSpektrogramu leg = new LegendaSpektrogramu(pnLegendaSp, spektrogram);
-
+                    spektrogram = new Spektrogram(pbSpektrogram, pbSkalaSpektrY, pbSkalaSpektrX, hScrollSpektrogram, pnLegendaSp, cwt, oscylogram);
+                    spektrogram.LogarytmicznaSkala = chbSkalaLogarytmiczna.Checked;                    
 
                     liczToolStripMenuItem.Enabled = true;
-                    chbSkalaLogarytmiczna.Enabled = true; 
+                    chbSkalaLogarytmiczna.Enabled = true;
+                    skalaToolStripMenuItem.Enabled = true;
                 }
             }
         }
@@ -115,7 +114,10 @@ namespace AnalizatorFalkowy
         }
 
         private void chbSkalaLogarytmiczna_CheckedChanged(object sender, EventArgs e)
-        {
+        {   
+            logarytmicznaToolStripMenuItem.Checked = chbSkalaLogarytmiczna.Checked;
+            liniowaToolStripMenuItem.Checked = !chbSkalaLogarytmiczna.Checked;
+
             spektrogram.LogarytmicznaSkala = chbSkalaLogarytmiczna.Checked;
             spektrogram.RysujPoZmianieSkali();            
         }
@@ -144,7 +146,68 @@ namespace AnalizatorFalkowy
                 oscylogram.Rysuj();
             }
             spektrogram.Rysuj();
-        }       
+        }
+
+        private void liniowaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logarytmicznaToolStripMenuItem.Checked = false;
+            liniowaToolStripMenuItem.Checked = true;
+            chbSkalaLogarytmiczna.Checked = logarytmicznaToolStripMenuItem.Checked;
+        }
+
+        private void logarytmicznaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logarytmicznaToolStripMenuItem.Checked = true;
+            liniowaToolStripMenuItem.Checked = false;
+            chbSkalaLogarytmiczna.Checked = logarytmicznaToolStripMenuItem.Checked;
+        }
+        private void UstawSkalaLogZaznaczenie(object sender)
+        {
+            dB40ToolStripMenuItem.Checked = false;
+            dB50ToolStripMenuItem1.Checked = false;
+            dB60ToolStripMenuItem2.Checked = false;
+            dB70ToolStripMenuItem3.Checked = false;
+            dB70ToolStripMenuItem3.Checked = false;
+            dB80ToolStripMenuItem4.Checked = false;
+
+            ((ToolStripMenuItem)sender).Checked = true;
+        }
+
+        private void dBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UstawSkalaLogZaznaczenie(sender);
+            spektrogram.MinDecybeli = -40;
+        }
+
+        private void dBToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            UstawSkalaLogZaznaczenie(sender);
+            spektrogram.MinDecybeli = -50;
+        }
+
+        private void dBToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            UstawSkalaLogZaznaczenie(sender);
+            spektrogram.MinDecybeli = -60;
+        }
+
+        private void dBToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            UstawSkalaLogZaznaczenie(sender);
+            spektrogram.MinDecybeli = -70;
+        }
+
+        private void dBToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            UstawSkalaLogZaznaczenie(sender);
+            spektrogram.MinDecybeli = -80;
+        }
+
+        private void ustawToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmUstawMINdB frmUstawieniaMINdB = new FrmUstawMINdB(spektrogram, ustawMindBToolStripMenuItem);            
+            frmUstawieniaMINdB.Show();
+        }
        
     }
 }
