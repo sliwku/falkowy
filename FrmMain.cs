@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace AnalizatorFalkowy
 {
@@ -17,6 +18,9 @@ namespace AnalizatorFalkowy
         Spektrogram spektrogram;        
         Falka falka, falka2;
         CWT cwt;
+        Thread thrRysujOscylogram;
+        Thread thrRysujSpektrogram;
+        Thread thrObliczCWT;
 
         bool scrollePowiazane = false;
 
@@ -32,6 +36,7 @@ namespace AnalizatorFalkowy
             numA.Minimum = Convert.ToDecimal(((FalkaCiagla)falka).StartA);
             numA.Maximum = Convert.ToDecimal(((FalkaCiagla)falka).StopA);
             falka2.Rysuj(pbFalka, (double)numA.Value);
+            
         }
 
         /// <summary>
@@ -45,6 +50,42 @@ namespace AnalizatorFalkowy
             scroll2.Value = scroll1.Value;
         }
 
+        private void ObliczIRysujCWT()
+        {            
+            cwt.ObliczCWT();
+            //  cwt.ObliczCWTprzezGPU();            
+
+            if (scrollePowiazane)
+            {
+                PowiazScrolle(hScrollOscylogram, hScrollSpektrogram);
+                hScrollSpektrogram.Enabled = hScrollOscylogram.Enabled;
+            }           
+            spektrogram.Rysuj();               
+        }
+
+        /// <summary>
+        /// Ustawia enabled podanych elementow zgodnie z wartoscia wlacz
+        /// </summary>
+        /// <param name="wlacz">Jesli true - wlacza wszystkie elementy, false - wylacza wszystkie elementy</param>
+        /// <param name="lista">Elementy do wlaczenia/wylaczenia. Osluguje MenuItem, ToolStripMenuItem, CheckBox,
+        /// TrackBar, ScrollBar</param>
+        private void WylaczWlaczElementy(bool wlacz, params object[] lista)
+        {
+            foreach (object item in lista)
+            {
+                if (item is MenuItem)
+                    ((MenuItem)item).Enabled = wlacz;
+                else if (item is ToolStripMenuItem)
+                    ((ToolStripMenuItem)item).Enabled = wlacz;
+                else if (item is CheckBox)
+                    ((CheckBox)item).Enabled = wlacz;
+                else if (item is TrackBar)
+                    ((TrackBar)item).Enabled = wlacz;
+                else if (item is ScrollBar)
+                    ((ScrollBar)item).Enabled = wlacz;
+            }
+        }
+
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialogPlikWave.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -55,8 +96,8 @@ namespace AnalizatorFalkowy
                 {
                     rysunekSygnalu = new RysunekSygnalu16Bit(plikWave.Kanal0Bit16, pictureBoxOscylogram);
                     oscylogram = new Oscylogram(rysunekSygnalu, plikWave, pictureBoxOscylogram, pbDefX, pbDefY,
-                        trackBarOscylogram, hScrollOscylogram);                    
-                    
+                        trackBarOscylogram, hScrollOscylogram);
+
                     oscylogram.Rysuj();
 
                     spektrogram = new Spektrogram(pbSpektrogram, pbSkalaSpektrY, pbSkalaSpektrX, hScrollSpektrogram, pnLegendaSp, cwt, oscylogram);
@@ -65,6 +106,10 @@ namespace AnalizatorFalkowy
                     liczToolStripMenuItem.Enabled = true;
                     chbSkalaLogarytmiczna.Enabled = true;
                     skalaToolStripMenuItem.Enabled = true;
+
+                  //  thrRysujOscylogram = new Thread(new ThreadStart(oscylogram.Rysuj));
+                 //   thrRysujSpektrogram = new Thread(new ThreadStart(spektrogram.Rysuj));
+                    thrObliczCWT = new Thread(new ThreadStart(ObliczIRysujCWT));                    
                 }
             }
         }
@@ -99,19 +144,10 @@ namespace AnalizatorFalkowy
         }
 
         private void liczToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            cwt.ObliczCWT();
-            //  cwt.ObliczCWTprzezGPU();
-
-            if (scrollePowiazane)
-            {
-                PowiazScrolle(hScrollOscylogram, hScrollSpektrogram);
-                hScrollSpektrogram.Enabled = hScrollOscylogram.Enabled;
-            }
-            spektrogram.Rysuj();
-
-            
+        {            
+            (thrObliczCWT = new Thread(new ThreadStart(ObliczIRysujCWT))).Start();            
         }
+        
 
         private void chbSkalaLogarytmiczna_CheckedChanged(object sender, EventArgs e)
         {   

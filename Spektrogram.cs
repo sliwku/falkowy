@@ -33,6 +33,8 @@ namespace AnalizatorFalkowy
         //dzieki temu minimum skali to -60dB
         private double minLogarytmowane = 0.000001;
 
+        #region Wlasciwosci
+
         public int MinDecybeli
         {
             get { return MinimumLogarytmowaneToDecybel(minLogarytmowane); }
@@ -96,6 +98,8 @@ namespace AnalizatorFalkowy
             set { paletaKolorow = value; }
         }
 
+        #endregion Property
+
         public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, Panel legendaSpektrogramu, CWT cwt, Oscylogram oscylogram)
             : this(pbSpektrogram, pbSkalaA, pbSkalaB,scrollSpektrogram, legendaSpektrogramu, cwt, oscylogram, new Paleta768Standard(), true)
         {
@@ -121,6 +125,7 @@ namespace AnalizatorFalkowy
 
             skala = new SkalaSpektrogram(this, oscylogram, pbSpektrogram, pbSkalaB, pbSkalaA);
             legenda = new LegendaSpektrogramu(legendaSpektrogramu, this);
+            legenda.Rysuj();
         }
 
         public void Rysuj()
@@ -141,8 +146,7 @@ namespace AnalizatorFalkowy
                 pbSpektrogram.Image = bmpLog;
             else
                 pbSpektrogram.Image = bmpLin;
-            skala.Rysuj();
-            legenda.Rysuj();
+            skala.Rysuj();            
         }
         private void UtworzSpektrogram()
         {
@@ -174,8 +178,12 @@ namespace AnalizatorFalkowy
         }
         public void SkalujSpektrogram()
         {
-            koloryLinSkala = new Color[pbSpektrogram.Width * (int)Math.Pow(RysunekSygnalu.PODZIELNIK_SKALI, oscylogram.Skala), pbSpektrogram.Height];
-            koloryLogSkala = new Color[pbSpektrogram.Width * (int)Math.Pow(RysunekSygnalu.PODZIELNIK_SKALI, oscylogram.Skala), pbSpektrogram.Height];
+            SkalujSpektrogram(0);
+        }
+        public void SkalujSpektrogram(int skalaOscylogramu)
+        {
+            koloryLinSkala = new Color[pbSpektrogram.Width * (int)Math.Pow(RysunekSygnalu.PODZIELNIK_SKALI, skalaOscylogramu), pbSpektrogram.Height];
+            koloryLogSkala = new Color[pbSpektrogram.Width * (int)Math.Pow(RysunekSygnalu.PODZIELNIK_SKALI, skalaOscylogramu), pbSpektrogram.Height];
 
             dx = koloryLinCalosc.GetLength(1) / (double)koloryLinSkala.GetLength(0);
             dy = koloryLinCalosc.GetLength(0) / (double)pbSpektrogram.Height;

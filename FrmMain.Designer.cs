@@ -108,14 +108,14 @@
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.otworzToolStripMenuItem.Text = "Otwórz";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
             this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
@@ -187,14 +187,14 @@
             // dB40ToolStripMenuItem
             // 
             this.dB40ToolStripMenuItem.Name = "dB40ToolStripMenuItem";
-            this.dB40ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dB40ToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.dB40ToolStripMenuItem.Text = "-40 dB";
             this.dB40ToolStripMenuItem.Click += new System.EventHandler(this.dBToolStripMenuItem_Click);
             // 
             // dB50ToolStripMenuItem1
             // 
             this.dB50ToolStripMenuItem1.Name = "dB50ToolStripMenuItem1";
-            this.dB50ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.dB50ToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
             this.dB50ToolStripMenuItem1.Text = "-50 dB";
             this.dB50ToolStripMenuItem1.Click += new System.EventHandler(this.dBToolStripMenuItem1_Click);
             // 
@@ -203,21 +203,21 @@
             this.dB60ToolStripMenuItem2.Checked = true;
             this.dB60ToolStripMenuItem2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.dB60ToolStripMenuItem2.Name = "dB60ToolStripMenuItem2";
-            this.dB60ToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.dB60ToolStripMenuItem2.Size = new System.Drawing.Size(108, 22);
             this.dB60ToolStripMenuItem2.Text = "-60 dB";
             this.dB60ToolStripMenuItem2.Click += new System.EventHandler(this.dBToolStripMenuItem2_Click);
             // 
             // dB70ToolStripMenuItem3
             // 
             this.dB70ToolStripMenuItem3.Name = "dB70ToolStripMenuItem3";
-            this.dB70ToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.dB70ToolStripMenuItem3.Size = new System.Drawing.Size(108, 22);
             this.dB70ToolStripMenuItem3.Text = "-70 dB";
             this.dB70ToolStripMenuItem3.Click += new System.EventHandler(this.dBToolStripMenuItem3_Click);
             // 
             // dB80ToolStripMenuItem4
             // 
             this.dB80ToolStripMenuItem4.Name = "dB80ToolStripMenuItem4";
-            this.dB80ToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.dB80ToolStripMenuItem4.Size = new System.Drawing.Size(108, 22);
             this.dB80ToolStripMenuItem4.Text = "-80 dB";
             this.dB80ToolStripMenuItem4.Click += new System.EventHandler(this.dBToolStripMenuItem4_Click);
             // 
