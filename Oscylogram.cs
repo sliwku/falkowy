@@ -50,7 +50,7 @@ namespace AnalizatorFalkowy
             TrackBar zoomTrackBar, HScrollBar scrollBar)
         {
             this.rysunekSygnalu = rysunekSygnalu;
-            this.pictureBoxRysunek = pictureBoxRysunek;
+            this.pictureBoxRysunek = pictureBoxRysunek;                                                                                 
             this.zoomTrackBar = zoomTrackBar;
             this.scrollBar = scrollBar;
             czestotliwoscProbkowania = plikWave.CzestotliwoscProbkowania;

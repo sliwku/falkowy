@@ -18,6 +18,7 @@ namespace AnalizatorFalkowy
         private Bitmap bmpLin;
         private Bitmap bmpLog;
         private Oscylogram oscylogram;
+        private FrmMain mForm;
 
         private SkalaSpektrogram skala;
         LegendaSpektrogramu legenda;
@@ -32,6 +33,8 @@ namespace AnalizatorFalkowy
 
         //dzieki temu minimum skali to -60dB
         private double minLogarytmowane = 0.000001;
+
+        public event EventHandler Narysowano;
 
         #region Wlasciwosci
 
@@ -100,20 +103,21 @@ namespace AnalizatorFalkowy
 
         #endregion Property
 
-        public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, Panel legendaSpektrogramu, CWT cwt, Oscylogram oscylogram)
-            : this(pbSpektrogram, pbSkalaA, pbSkalaB,scrollSpektrogram, legendaSpektrogramu, cwt, oscylogram, new Paleta768Standard(), true)
+        public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, Panel legendaSpektrogramu, CWT cwt, Oscylogram oscylogram, FrmMain mForm)
+            : this(pbSpektrogram, pbSkalaA, pbSkalaB,scrollSpektrogram, legendaSpektrogramu, cwt, oscylogram, mForm, new Paleta768Standard(), true)
         {
             
         }
         public Spektrogram(PictureBox pbSpektrogram, PictureBox pbSkalaA, PictureBox pbSkalaB, HScrollBar scrollSpektrogram, Panel legendaSpektrogramu,
-            CWT cwt, Oscylogram oscylogram, PaletaKolorow paletaKolorow, bool logarytmicznaSkala)
+            CWT cwt, Oscylogram oscylogram, FrmMain mForm, PaletaKolorow paletaKolorow, bool logarytmicznaSkala)
         {
             this.pbSpektrogram = pbSpektrogram;
             this.scrollSpektrogram = scrollSpektrogram;
             this.cwt = cwt;
             this.paletaKolorow = paletaKolorow;
             this.logarytmicznaSkala = logarytmicznaSkala;
-            this.oscylogram = oscylogram;            
+            this.oscylogram = oscylogram;   
+            this.mForm = mForm;
 
             if (cwt.Falka is FalkaCiagla)
             {
@@ -125,8 +129,8 @@ namespace AnalizatorFalkowy
 
             skala = new SkalaSpektrogram(this, oscylogram, pbSpektrogram, pbSkalaB, pbSkalaA);
             legenda = new LegendaSpektrogramu(legendaSpektrogramu, this);
-            legenda.Rysuj();
-        }
+            legenda.Rysuj();           
+        }        
 
         public void Rysuj()
         {              
@@ -146,7 +150,8 @@ namespace AnalizatorFalkowy
                 pbSpektrogram.Image = bmpLog;
             else
                 pbSpektrogram.Image = bmpLin;
-            skala.Rysuj();            
+            skala.Rysuj();
+            mForm.Invoke(mForm.DelKoniecWatku, null);
         }
         private void UtworzSpektrogram()
         {

@@ -10,6 +10,8 @@ using System.Threading;
 
 namespace AnalizatorFalkowy
 {
+    
+
     public partial class FrmMain : Form
     {
         PlikWave plikWave;
@@ -22,11 +24,15 @@ namespace AnalizatorFalkowy
         Thread thrRysujSpektrogram;
         Thread thrObliczCWT;
 
+        public delegate void DelTypKoniecWatku();
+        public DelTypKoniecWatku DelKoniecWatku; 
+
         bool scrollePowiazane = false;
 
         public FrmMain()
         {
             InitializeComponent();
+            DelKoniecWatku = new DelTypKoniecWatku(KoniecWatku);
 
             scrollePowiazane = false;
 
@@ -50,6 +56,11 @@ namespace AnalizatorFalkowy
             scroll2.Value = scroll1.Value;
         }
 
+        private void KoniecWatku()
+        {
+            this.Enabled = true;
+        }
+
         private void ObliczIRysujCWT()
         {            
             cwt.ObliczCWT();
@@ -66,24 +77,30 @@ namespace AnalizatorFalkowy
         /// <summary>
         /// Ustawia enabled podanych elementow zgodnie z wartoscia wlacz
         /// </summary>
-        /// <param name="wlacz">Jesli true - wlacza wszystkie elementy, false - wylacza wszystkie elementy</param>
+        /// <param name="zalacz">Jesli true - wlacza wszystkie elementy, false - wylacza wszystkie elementy</param>
         /// <param name="lista">Elementy do wlaczenia/wylaczenia. Osluguje MenuItem, ToolStripMenuItem, CheckBox,
         /// TrackBar, ScrollBar</param>
-        private void WylaczWlaczElementy(bool wlacz, params object[] lista)
+        private void WylaczWlaczElementy(bool zalacz, params object[] lista)
         {
             foreach (object item in lista)
             {
                 if (item is MenuItem)
-                    ((MenuItem)item).Enabled = wlacz;
+                    ((MenuItem)item).Enabled = zalacz;
                 else if (item is ToolStripMenuItem)
-                    ((ToolStripMenuItem)item).Enabled = wlacz;
+                    ((ToolStripMenuItem)item).Enabled = zalacz;
                 else if (item is CheckBox)
-                    ((CheckBox)item).Enabled = wlacz;
+                    ((CheckBox)item).Enabled = zalacz;
                 else if (item is TrackBar)
-                    ((TrackBar)item).Enabled = wlacz;
+                    ((TrackBar)item).Enabled = zalacz;
                 else if (item is ScrollBar)
-                    ((ScrollBar)item).Enabled = wlacz;
+                    ((ScrollBar)item).Enabled = zalacz;
             }
+        }
+
+        private void NarysowanoSpektrogram(object sender, EventArgs e)
+        {
+            thrObliczCWT.Abort();
+            this.Enabled = true;
         }
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
@@ -100,7 +117,7 @@ namespace AnalizatorFalkowy
 
                     oscylogram.Rysuj();
 
-                    spektrogram = new Spektrogram(pbSpektrogram, pbSkalaSpektrY, pbSkalaSpektrX, hScrollSpektrogram, pnLegendaSp, cwt, oscylogram);
+                    spektrogram = new Spektrogram(pbSpektrogram, pbSkalaSpektrY, pbSkalaSpektrX, hScrollSpektrogram, pnLegendaSp, cwt, oscylogram, this);
                     spektrogram.LogarytmicznaSkala = chbSkalaLogarytmiczna.Checked;                    
 
                     liczToolStripMenuItem.Enabled = true;
@@ -144,7 +161,8 @@ namespace AnalizatorFalkowy
         }
 
         private void liczToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
+        {
+            this.Enabled = false;
             (thrObliczCWT = new Thread(new ThreadStart(ObliczIRysujCWT))).Start();            
         }
         
@@ -244,6 +262,5 @@ namespace AnalizatorFalkowy
             FrmUstawMINdB frmUstawieniaMINdB = new FrmUstawMINdB(spektrogram, ustawMindBToolStripMenuItem);            
             frmUstawieniaMINdB.Show();
         }
-       
     }
 }

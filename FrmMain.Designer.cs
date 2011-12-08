@@ -103,19 +103,19 @@
             this.zakończToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.plikToolStripMenuItem.Text = "Plik";
+            this.plikToolStripMenuItem.Text = "Plik";           
             // 
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.otworzToolStripMenuItem.Text = "Otwórz";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
             this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
@@ -126,7 +126,7 @@
             this.ustawToolStripMenuItem});
             this.cWTToolStripMenuItem.Name = "cWTToolStripMenuItem";
             this.cWTToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.cWTToolStripMenuItem.Text = "CWT";
+            this.cWTToolStripMenuItem.Text = "CWT";           
             // 
             // liczToolStripMenuItem
             // 
