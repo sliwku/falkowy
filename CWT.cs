@@ -20,9 +20,15 @@ namespace AnalizatorFalkowy
         private Byte[] przygotowanySygnal8bit;
         private Int16[] przygotowanySygnal16bit;
 
-        private int[,] wynikCWT;        
+        private int[,] wynikCWT;
+        private int postep;      
 
         #endregion
+
+        public int Postep
+        {
+            get { return postep; }            
+        }
 
         public int KrokB
         {
@@ -85,9 +91,29 @@ namespace AnalizatorFalkowy
         {
             double cwt = 0;
 
-            wynikCWT = new int[falka.FalkaDlaA.Length, (sygnal.Length / dokladnoscB) + 1]; 
+            wynikCWT = new int[falka.FalkaDlaA.Length, (sygnal.Length / dokladnoscB) + 1];             
+            
+            for (postep = 0; postep < falka.FalkaDlaA.Length; postep++)
+            {
+                for (int b = 0, iB = 0; b < sygnal.Length; b += dokladnoscB, iB++)
+                {
+                    cwt = 0;
+                    for (int i = b, j = 0; j < falka.FalkaDlaA[postep].Length; i++, j++)
+                        cwt += przygotowanySygnal16bit[i] * falka.FalkaDlaA[postep][j];
 
-            for (int iA = 0; iA < falka.FalkaDlaA.Length; iA++)
+                    wynikCWT[postep, iB] = Math.Abs((int)cwt);
+                }
+            }
+        }
+
+        private void ObliczCWTParallelFX(Int16[] sygnal)
+        {
+            double cwt = 0;
+
+            wynikCWT = new int[falka.FalkaDlaA.Length, (sygnal.Length / dokladnoscB) + 1];
+
+            int size = falka.FalkaDlaA.Length;
+            System.Threading.Parallel.For(0, size, delegate (int iA)           
             {
                 for (int b = 0, iB = 0; b < sygnal.Length; b += dokladnoscB, iB++)
                 {
@@ -97,7 +123,7 @@ namespace AnalizatorFalkowy
 
                     wynikCWT[iA, iB] = Math.Abs((int)cwt);
                 }
-            }
+            });
         }
 
         

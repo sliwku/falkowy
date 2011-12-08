@@ -49,6 +49,9 @@
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Threading">
+      <HintPath>E:\Downloads2\ParallelMarkDemo\System.Threading.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +69,12 @@
     <Compile Include="FalkaDyskretna.cs" />
     <Compile Include="FalkaMexHat.cs" />
     <Compile Include="FalkaMorleta.cs" />
+    <Compile Include="FrmPostep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPostep.Designer.cs">
+      <DependentUpon>FrmPostep.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUstawMINdB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +111,9 @@
     <Compile Include="Sygnal2.cs" />
     <Compile Include="Sygnal16bit.cs" />
     <Compile Include="Sygnal8.cs" />
+    <EmbeddedResource Include="FrmPostep.resx">
+      <DependentUpon>FrmPostep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUstawMINdB.resx">
       <DependentUpon>FrmUstawMINdB.cs</DependentUpon>
     </EmbeddedResource>

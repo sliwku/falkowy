@@ -25,14 +25,16 @@ namespace AnalizatorFalkowy
         Thread thrObliczCWT;
 
         public delegate void DelTypKoniecWatku();
-        public DelTypKoniecWatku DelKoniecWatku; 
+        public DelTypKoniecWatku DelKoniecWatku;
+
+        FrmPostep frmPostep;
 
         bool scrollePowiazane = false;
 
         public FrmMain()
         {
             InitializeComponent();
-            DelKoniecWatku = new DelTypKoniecWatku(KoniecWatku);
+            DelKoniecWatku = new DelTypKoniecWatku(KoniecWatku);            
 
             scrollePowiazane = false;
 
@@ -58,7 +60,7 @@ namespace AnalizatorFalkowy
 
         private void KoniecWatku()
         {
-            this.Enabled = true;
+            frmPostep.Close();
         }
 
         private void ObliczIRysujCWT()
@@ -95,13 +97,7 @@ namespace AnalizatorFalkowy
                 else if (item is ScrollBar)
                     ((ScrollBar)item).Enabled = zalacz;
             }
-        }
-
-        private void NarysowanoSpektrogram(object sender, EventArgs e)
-        {
-            thrObliczCWT.Abort();
-            this.Enabled = true;
-        }
+        }       
 
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -161,9 +157,12 @@ namespace AnalizatorFalkowy
         }
 
         private void liczToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Enabled = false;
-            (thrObliczCWT = new Thread(new ThreadStart(ObliczIRysujCWT))).Start();            
+        {           
+            thrObliczCWT = new Thread(new ThreadStart(ObliczIRysujCWT));
+            thrObliczCWT.Priority = ThreadPriority.Highest;
+            thrObliczCWT.Start();
+            frmPostep = new FrmPostep(thrObliczCWT, cwt);
+            frmPostep.ShowDialog();
         }
         
 
@@ -177,7 +176,7 @@ namespace AnalizatorFalkowy
         }
 
         private void zakończToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {            
             Application.Exit();
         }
 
