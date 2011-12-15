@@ -84,7 +84,7 @@ namespace AnalizatorFalkowy
             if (plikSygnal.Dane16bit != null)
             {
                 PrzygotujSygnal(plikSygnal.Dane16bit, ref przygotowanySygnal16bit);
-                ObliczCWT(plikSygnal.Dane16bit);
+                ObliczCWTParallelFX(plikSygnal.Dane16bit);
             }
         }
         private void ObliczCWT(Int16[] sygnal)
@@ -106,15 +106,21 @@ namespace AnalizatorFalkowy
             }
         }
 
+        /// <summary>
+        /// Oblicza CWT korzystajac z biblioteki ParallelFX i korzystajac w ten sposob ze wszystkich rdzeni CPU
+        /// </summary>
+        /// <param name="sygnal"></param>
         private void ObliczCWTParallelFX(Int16[] sygnal)
         {
-            double cwt = 0;
-
             wynikCWT = new int[falka.FalkaDlaA.Length, (sygnal.Length / dokladnoscB) + 1];
 
             int size = falka.FalkaDlaA.Length;
-            System.Threading.Parallel.For(0, size, delegate (int iA)           
+            postep = 0;
+            System.Threading.Parallel.For(0, size, iA =>           
             {
+                postep++;                                                   //potrzebne do formatki postepu wykonania obliczen
+                double cwt = 0;                                             // dekalarujemy wewnatrz parallel bo jesli umiescimy na zewnatrz to wariuje
+                                                                            // w sumie nie wiem dlaczego; traktuje to wtedy jako inta chyba
                 for (int b = 0, iB = 0; b < sygnal.Length; b += dokladnoscB, iB++)
                 {
                     cwt = 0;
@@ -125,8 +131,6 @@ namespace AnalizatorFalkowy
                 }
             });
         }
-
-        
 
         public void ObliczCWTprzezGPU()
         {

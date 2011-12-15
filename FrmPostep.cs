@@ -34,5 +34,11 @@ namespace AnalizatorFalkowy
         {
             progressBar1.Value = cwt.Postep;
         }
+
+        private void btnPrzerwij_Click(object sender, EventArgs e)
+        {
+            watekRoboczy.Abort();
+            this.Close();
+        }
     }
 }
