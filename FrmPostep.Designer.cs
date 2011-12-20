@@ -66,7 +66,7 @@
             this.Name = "FrmPostep";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmPostep";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPostep_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPostep_FormClosing);            
             this.ResumeLayout(false);
 
         }

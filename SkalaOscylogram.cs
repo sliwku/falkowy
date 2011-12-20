@@ -83,7 +83,8 @@ namespace AnalizatorFalkowy
 
         /// <summary>
         /// Stosowany przy zmianie rozmiaru spektrogramu. Oblicza ponownie parametry zależne od wielkośco pictureBoxa
-        /// i ustala Graphics do nowych rozmiarów oraz czyści graphics dla def. skali Y        
+        /// i ustala Graphics do nowych rozmiarów oraz czyści graphics dla def. skali Y  
+        /// </summary>
         public override void Odswiez()
         {
             pikselToWartoscSygnalu = ObliczPikselToWartoscSygnalu();

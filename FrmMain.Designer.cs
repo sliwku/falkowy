@@ -48,11 +48,9 @@
             this.openFileDialogPlikWave = new System.Windows.Forms.OpenFileDialog();
             this.pictureBoxOscylogram = new System.Windows.Forms.PictureBox();
             this.hScrollOscylogram = new System.Windows.Forms.HScrollBar();
-            this.label1 = new System.Windows.Forms.Label();
             this.pbDefX = new System.Windows.Forms.PictureBox();
             this.pbDefY = new System.Windows.Forms.PictureBox();
             this.pbSpektrogram = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.chbSkalaLogarytmiczna = new System.Windows.Forms.CheckBox();
             this.pbSkalaSpektrX = new System.Windows.Forms.PictureBox();
             this.pbSkalaSpektrY = new System.Windows.Forms.PictureBox();
@@ -92,7 +90,7 @@
             this.skalaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(976, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1005, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,19 +101,19 @@
             this.zakończToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.plikToolStripMenuItem.Text = "Plik";           
+            this.plikToolStripMenuItem.Text = "Plik";
             // 
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.otworzToolStripMenuItem.Text = "Otwórz";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
             // 
             // zakończToolStripMenuItem
             // 
             this.zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
-            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.zakończToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.zakończToolStripMenuItem.Text = "Zakończ";
             this.zakończToolStripMenuItem.Click += new System.EventHandler(this.zakończToolStripMenuItem_Click);
             // 
@@ -126,7 +124,7 @@
             this.ustawToolStripMenuItem});
             this.cWTToolStripMenuItem.Name = "cWTToolStripMenuItem";
             this.cWTToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.cWTToolStripMenuItem.Text = "CWT";           
+            this.cWTToolStripMenuItem.Text = "CWT";
             // 
             // liczToolStripMenuItem
             // 
@@ -233,7 +231,7 @@
             this.pictureBoxOscylogram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxOscylogram.Location = new System.Drawing.Point(244, 35);
             this.pictureBoxOscylogram.Name = "pictureBoxOscylogram";
-            this.pictureBoxOscylogram.Size = new System.Drawing.Size(682, 147);
+            this.pictureBoxOscylogram.Size = new System.Drawing.Size(711, 147);
             this.pictureBoxOscylogram.TabIndex = 0;
             this.pictureBoxOscylogram.TabStop = false;
             // 
@@ -244,18 +242,9 @@
             this.hScrollOscylogram.Enabled = false;
             this.hScrollOscylogram.Location = new System.Drawing.Point(244, 213);
             this.hScrollOscylogram.Name = "hScrollOscylogram";
-            this.hScrollOscylogram.Size = new System.Drawing.Size(682, 17);
+            this.hScrollOscylogram.Size = new System.Drawing.Size(711, 17);
             this.hScrollOscylogram.TabIndex = 4;
             this.hScrollOscylogram.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar_Scroll);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 346);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
             // 
             // pbDefX
             // 
@@ -263,14 +252,14 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pbDefX.Location = new System.Drawing.Point(224, 186);
             this.pbDefX.Name = "pbDefX";
-            this.pbDefX.Size = new System.Drawing.Size(715, 24);
+            this.pbDefX.Size = new System.Drawing.Size(744, 24);
             this.pbDefX.TabIndex = 6;
             this.pbDefX.TabStop = false;
             // 
             // pbDefY
             // 
             this.pbDefY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbDefY.Location = new System.Drawing.Point(932, 27);
+            this.pbDefY.Location = new System.Drawing.Point(961, 27);
             this.pbDefY.Name = "pbDefY";
             this.pbDefY.Size = new System.Drawing.Size(44, 161);
             this.pbDefY.TabIndex = 7;
@@ -284,18 +273,9 @@
             this.pbSpektrogram.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbSpektrogram.Location = new System.Drawing.Point(244, 253);
             this.pbSpektrogram.Name = "pbSpektrogram";
-            this.pbSpektrogram.Size = new System.Drawing.Size(682, 244);
+            this.pbSpektrogram.Size = new System.Drawing.Size(711, 244);
             this.pbSpektrogram.TabIndex = 8;
             this.pbSpektrogram.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 388);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "label2";
             // 
             // chbSkalaLogarytmiczna
             // 
@@ -317,7 +297,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pbSkalaSpektrX.Location = new System.Drawing.Point(224, 503);
             this.pbSkalaSpektrX.Name = "pbSkalaSpektrX";
-            this.pbSkalaSpektrX.Size = new System.Drawing.Size(715, 24);
+            this.pbSkalaSpektrX.Size = new System.Drawing.Size(744, 24);
             this.pbSkalaSpektrX.TabIndex = 11;
             this.pbSkalaSpektrX.TabStop = false;
             // 
@@ -332,8 +312,6 @@
             // 
             // pbFalka
             // 
-            this.pbFalka.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pbFalka.BackColor = System.Drawing.Color.White;
             this.pbFalka.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbFalka.Location = new System.Drawing.Point(0, 35);
@@ -368,7 +346,7 @@
             this.hScrollSpektrogram.Enabled = false;
             this.hScrollSpektrogram.Location = new System.Drawing.Point(244, 530);
             this.hScrollSpektrogram.Name = "hScrollSpektrogram";
-            this.hScrollSpektrogram.Size = new System.Drawing.Size(682, 17);
+            this.hScrollSpektrogram.Size = new System.Drawing.Size(711, 17);
             this.hScrollSpektrogram.TabIndex = 15;
             this.hScrollSpektrogram.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollSpektrogram_Scroll);
             // 
@@ -383,7 +361,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 566);
+            this.ClientSize = new System.Drawing.Size(1005, 566);
             this.Controls.Add(this.pnLegendaSp);
             this.Controls.Add(this.hScrollSpektrogram);
             this.Controls.Add(this.numA);
@@ -391,12 +369,10 @@
             this.Controls.Add(this.pbSkalaSpektrY);
             this.Controls.Add(this.pbSkalaSpektrX);
             this.Controls.Add(this.chbSkalaLogarytmiczna);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.pbSpektrogram);
             this.Controls.Add(this.pictureBoxOscylogram);
             this.Controls.Add(this.pbDefY);
             this.Controls.Add(this.pbDefX);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.hScrollOscylogram);
             this.Controls.Add(this.trackBarOscylogram);
             this.Controls.Add(this.menuStrip1);
@@ -429,13 +405,11 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogPlikWave;
         private System.Windows.Forms.PictureBox pictureBoxOscylogram;
         private System.Windows.Forms.HScrollBar hScrollOscylogram;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbDefX;
         private System.Windows.Forms.PictureBox pbDefY;
         private System.Windows.Forms.ToolStripMenuItem cWTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem liczToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbSpektrogram;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chbSkalaLogarytmiczna;
         private System.Windows.Forms.ToolStripMenuItem zakończToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ustawToolStripMenuItem;

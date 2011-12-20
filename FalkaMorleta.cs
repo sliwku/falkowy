@@ -27,8 +27,8 @@ namespace AnalizatorFalkowy
             }
             else
             {
-                x = - Math.Log(a, 10.0) - 4;
-                wspDlugosciFalki = ((Math.Log(a, 10.0) + 4) - x);
+                x = - Math.Log(a, 10) - 4;
+                wspDlugosciFalki = ((Math.Log(a, 10) + 4) - x);
             }
             double dx = wspDlugosciFalki;
             wspDlugosciFalki *= 0.125;        // == wspDlFalki /= 8;  (1/8 = 0.125) 

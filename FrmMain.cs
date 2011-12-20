@@ -19,9 +19,7 @@ namespace AnalizatorFalkowy
         Oscylogram oscylogram;
         Spektrogram spektrogram;        
         Falka falka, falka2;
-        CWT cwt;
-        Thread thrRysujOscylogram;
-        Thread thrRysujSpektrogram;
+        CWT cwt;        
         Thread thrObliczCWT;
 
         public delegate void DelTypKoniecWatku();
@@ -38,12 +36,12 @@ namespace AnalizatorFalkowy
 
             scrollePowiazane = false;
 
-            falka = new FalkaMorleta(0.1, 2.0, 0.1, 500);
+            falka = new FalkaMorleta(0.1, 2.0, 0.01, 500);
             falka2 = new FalkaMexicanHat();
-            cwt = new CWT(falka2, plikWave);
+            cwt = new CWT(falka, plikWave);
             numA.Minimum = Convert.ToDecimal(((FalkaCiagla)falka).StartA);
             numA.Maximum = Convert.ToDecimal(((FalkaCiagla)falka).StopA);
-            falka2.Rysuj(pbFalka, (double)numA.Value);
+            falka.Rysuj(pbFalka, (double)numA.Value);
             
         }
 
@@ -60,7 +58,8 @@ namespace AnalizatorFalkowy
 
         private void KoniecWatku()
         {
-            frmPostep.Close();
+            if (frmPostep != null)
+                frmPostep.Close();
         }
 
         private void ObliczIRysujCWT()
@@ -128,8 +127,9 @@ namespace AnalizatorFalkowy
         }
 
         private void FrmMain_Resize(object sender, EventArgs e)
-        {
+        {        
             oscylogram.Resize();
+            spektrogram.Resize();
         }
 
         private void trackBarOscylogram_Scroll(object sender, EventArgs e)
@@ -161,7 +161,7 @@ namespace AnalizatorFalkowy
             thrObliczCWT = new Thread(new ThreadStart(ObliczIRysujCWT));
             thrObliczCWT.Priority = ThreadPriority.Highest;
             thrObliczCWT.Start();
-            frmPostep = new FrmPostep(thrObliczCWT, cwt);
+            frmPostep = new FrmPostep(thrObliczCWT, cwt);            
             frmPostep.ShowDialog();
         }
         
@@ -188,7 +188,7 @@ namespace AnalizatorFalkowy
 
         private void numA_ValueChanged(object sender, EventArgs e)
         {
-            falka2.Rysuj(pbFalka, (double)numA.Value);
+            cwt.Falka.Rysuj(pbFalka, (double)numA.Value);           
         }     
 
         private void hScrollSpektrogram_Scroll(object sender, ScrollEventArgs e)
@@ -261,5 +261,7 @@ namespace AnalizatorFalkowy
             FrmUstawMINdB frmUstawieniaMINdB = new FrmUstawMINdB(spektrogram, ustawMindBToolStripMenuItem);            
             frmUstawieniaMINdB.Show();
         }
+
+      
     }
 }

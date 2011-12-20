@@ -121,8 +121,13 @@ namespace AnalizatorFalkowy
             return dzielna % dzielnik > 0 ? (dzielna / dzielnik) + 1 : dzielna / dzielnik;
         }
 
+        /// <summary>
+        /// Stosowany przy zmianie rozmiaru spektrogramu. Oblicza ponownie parametry zależne od wielkośco pictureBoxa
+        /// i ustala Graphics do nowych rozmiarów oraz czyści graphics dla def. skali Y  
+        /// </summary>
         public override void Odswiez()
         {
+            probkaToSekunda = ObliczProbkaToSekunda();
             maxIloscEtY = ObliczMaxEtykietY();
             dYs = ObliczDY();
             iloscEty = ObliczIloscEtykiet(out dzielnikSkal);

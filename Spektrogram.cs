@@ -130,14 +130,28 @@ namespace AnalizatorFalkowy
             skala = new SkalaSpektrogram(this, oscylogram, pbSpektrogram, pbSkalaB, pbSkalaA);
             legenda = new LegendaSpektrogramu(legendaSpektrogramu, this);
             legenda.Rysuj();           
-        }        
+        }
+
+        public void Resize()
+        {
+            SkalujSpektrogram();
+            RysujUtworzonySpektrogram();
+            skala.Odswiez();
+            skala.Rysuj();
+        }
 
         public void Rysuj()
         {              
             UtworzSpektrogram();
             SkalujSpektrogram();
+            RysujUtworzonySpektrogram();            
+            skala.Rysuj();
+            mForm.Invoke(mForm.DelKoniecWatku, null);
+        }
+        private void RysujUtworzonySpektrogram()
+        {
             bmpLin = new Bitmap(pbSpektrogram.Width, pbSpektrogram.Height);
-            bmpLog = new Bitmap(pbSpektrogram.Width, pbSpektrogram.Height);            
+            bmpLog = new Bitmap(pbSpektrogram.Width, pbSpektrogram.Height);
 
             for (int x1 = 0, x2 = scrollSpektrogram.Value; x1 < pbSpektrogram.Width; x1++, x2++)
                 for (int y = 0; y < pbSpektrogram.Height; y++)
@@ -150,11 +164,10 @@ namespace AnalizatorFalkowy
                 pbSpektrogram.Image = bmpLog;
             else
                 pbSpektrogram.Image = bmpLin;
-            skala.Rysuj();
-            mForm.Invoke(mForm.DelKoniecWatku, null);
         }
         private void UtworzSpektrogram()
         {
+            OdswiezDane();
             koloryLinCalosc = new Color[cwt.WynikCWT.GetLength(0), cwt.WynikCWT.GetLength(1)];
             koloryLogCalosc = new Color[cwt.WynikCWT.GetLength(0), cwt.WynikCWT.GetLength(1)];
 
@@ -180,6 +193,16 @@ namespace AnalizatorFalkowy
                     else
                         koloryLogCalosc[i, j] = paletaKolorow.Paleta[0];
                 }
+        }
+        private void OdswiezDane()
+        {
+            if (cwt.Falka is FalkaCiagla)
+            {
+                startA = ((FalkaCiagla)cwt.Falka).StartA;
+                stopA = ((FalkaCiagla)cwt.Falka).StopA;
+                krokA = ((FalkaCiagla)cwt.Falka).KrokA;
+                iloscA = cwt.IloscA;
+            } 
         }
         public void SkalujSpektrogram()
         {

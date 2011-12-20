@@ -61,6 +61,10 @@ namespace AnalizatorFalkowy
 
         public abstract void Rysuj();
 
+        /// <summary>
+        /// Stosowany przy zmianie rozmiaru spektrogramu. Oblicza ponownie parametry zależne od wielkośco pictureBoxa
+        /// i ustala Graphics do nowych rozmiarów oraz czyści graphics dla def. skali Y  
+        /// </summary>
         public abstract void Odswiez();
     }
 }

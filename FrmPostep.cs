@@ -20,18 +20,20 @@ namespace AnalizatorFalkowy
             this.cwt = cwt;
             InitializeComponent();
             
-            progressBar1.Maximum = cwt.IloscA;
+            progressBar1.Maximum = cwt.IloscA;        
             timer1.Interval = 500;
             timer1.Enabled = true;
         }
 
         private void FrmPostep_FormClosing(object sender, FormClosingEventArgs e)
         {
+            timer1.Stop();
+            timer1.Dispose();
             watekRoboczy.Abort();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {
+        {  
             progressBar1.Value = cwt.Postep;
         }
 
@@ -39,6 +41,6 @@ namespace AnalizatorFalkowy
         {
             watekRoboczy.Abort();
             this.Close();
-        }
+        }       
     }
 }
